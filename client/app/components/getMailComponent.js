@@ -20,7 +20,7 @@ function GetMailComponent() {
       
       
 
-      const res = await fetch('http://localhost:5000/mail', {
+      const res = await fetch('https://gmailloader.onrender.com/mail', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -53,7 +53,7 @@ function GetMailComponent() {
       
       
 
-      const res = await fetch('http://localhost:8080/mail', {
+      const res = await fetch('https://gmailloader.onrender.com/mail', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
