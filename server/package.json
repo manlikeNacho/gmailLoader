@@ -1,0 +1,28 @@
+{
+  "name": "selecto",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "dev": "cross-env DEBUG=worker:* PORT=5000 nodemon app.js",
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@react-oauth/google": "^0.12.1",
+    "axios": "^1.7.2",
+    "base64url": "^3.0.1",
+    "config": "^3.3.11",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "debug": "^4.3.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "googleapis": "^140.0.0",
+    "lodash": "^4.17.21",
+    "openai": "^4.49.1",
+    "winston": "^3.13.0"
+  }
+}
