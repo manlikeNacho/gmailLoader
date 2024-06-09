@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* base styles */
+body {
+  background: #ebf0fa;
+  @apply text-gray-500 m-8;
+}
+main {
+  @apply max-w-5xl my-12 mx-auto px-8;
+}
+
+
+/* form styles */
+
+form label {
+  @apply block;
+}
+form input,
+form textarea,
+form select {
+  @apply 
+    block 
+    mt-2 my-4 px-2 py-1 
+    rounded-sm w-full;
+}
+form button {
+  @apply block mx-auto;
+}
+
+/* feedback styles */
+.error {
+  @apply 
+    border-2 
+    border-red-500 
+    bg-red-300
+    text-red-800 
+    py-1 px-2 
+    rounded-sm
+    block
+    max-w-fit
+    my-4 mx-auto;
+}
+
+
+
