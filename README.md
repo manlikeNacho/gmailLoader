@@ -30,15 +30,17 @@ GmailLoader is a web application designed to fetch and classify emails from a us
 ` npm install`
 3. Environment Variables:
 Create a .env file in the root directory and add the following:
-
-` GOOGLE_CLIENT_ID=your-google-client-id`
-` GOOGLE_CLIENT_SECRET=your-google-client-secret`
-` NEXTAUTH_URL=http://localhost:3000`
-` NEXTAUTH_SECRET=your-nextauth-secret (openssl key)`
-` EXPRESS_SESSION_SECRET=secret`
-` GOOGLE_CLIENT_CALLBACK_URI=your-callbackUri-from-google-console`
-` JWT_PRIVATE_KEY=jwt-key`
-` WINSTON_LOG_LEVEL=info`
+```
+ GOOGLE_CLIENT_ID=your-google-client-id
+ GOOGLE_CLIENT_SECRET=your-google-client-secret
+ NEXTAUTH_URL=http://localhost:3000
+ NEXTAUTH_SECRET=your-nextauth-secret (openssl key)
+ EXPRESS_SESSION_SECRET=secret
+ GOOGLE_CLIENT_CALLBACK_URI=your-callbackUri-from-google-console
+ JWT_PRIVATE_KEY=jwt-key
+ WINSTON_LOG_LEVEL=info
+ 
+```
 4. Run the development server:
 ` npm run dev`
 
