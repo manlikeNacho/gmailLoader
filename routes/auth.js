@@ -64,8 +64,8 @@ router.get('/mail', isLoggedIn, async (req, res) => {
 
       res.send(emails);
   } catch (error) {
-      logger.error(error)
-      res.status(500).send(`Error fetching mails: ${error}`);
+    logger.error(error.message)
+    res.status(400).jsonp({ error: error.message })
   }
 });
 
@@ -75,7 +75,7 @@ router.post('/mail', isLoggedIn, async (req, res) => {
   const openAiKey = req.headers['openai-api-key'];
   
   if (!emails || emails.length < 1 || !openAiKey) {
-      return res.status(400).send('Invalid request: missing emails or OpenAI API key');
+      return res.status(400).jsonp({error: "Invalid key or empty mail sent"});
   }
 
   try {
@@ -96,8 +96,8 @@ router.post('/mail', isLoggedIn, async (req, res) => {
       res.json(classifiedEmails);
   } catch (error) {
       console.log(error)
-      logger.error(error)
-      res.status(400).send(`${error}`);
+      logger.error(error.message)
+      res.status(400).jsonp({ error: error.message })
   }
 });
 
