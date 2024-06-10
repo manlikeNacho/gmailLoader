@@ -9,7 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@nextui-org/button": "^2.0.33",
+    "@nextui-org/modal": "^2.0.35",
+    "@nextui-org/react": "^2.4.1",
+    "@nextui-org/spinner": "^2.0.29",
     "@react-oauth/google": "^0.12.1",
+    "dompurify": "^3.1.5",
+    "framer-motion": "^11.2.10",
     "next": "14.2.3",
     "next-auth": "^4.24.7",
     "react": "^18",

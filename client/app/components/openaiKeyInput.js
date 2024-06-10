@@ -3,12 +3,15 @@
 import { useState } from 'react';
 import { useSession } from 'next-auth/react';
 import Link from 'next/link';
+import { Button } from '@nextui-org/button';
+import { useRouter } from 'next/navigation';
 
 function OpenAIKeyInput() {
   const { data: session, status } = useSession();
   const [aiKey, setAIKey] = useState('');
   const [message, setMessage] = useState('');
   const [valid, setValid] = useState(false);
+  const router = useRouter()
 
   const handleInputChange = (e) => {
     setAIKey(e.target.value);
@@ -27,6 +30,7 @@ function OpenAIKeyInput() {
     }
   };
 
+
   return (
     <div>
       <form className="max-w-sm mx-auto space-y-1" onSubmit={handleFormSubmit}>
@@ -43,25 +47,16 @@ function OpenAIKeyInput() {
           placeholder="1234-abcd..."
         />
         <p id="helper-text-explanation" className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-          We’ll never share your details. They're saved to your localStorage.
+          Well never share your details. They&apos;re saved to your localStorage.
         </p>
-        <div className="w-full flex justify-start gap-2">
-          <button
-            type="submit"
-            className="border border-gray-900 bg-gray-900 text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2"
-          >
-            Save API Key
-          </button>
+        <div className="w-full space-x-2">
+        <Button  size='md' type='submit' className='text-white bg-gray-900 border-2 font-semibold border-gray-900' radius='sm'>
+        Save API KEY
+       </Button>
           {session && status === 'authenticated' && (
-            <Link href="/dashboard">
-              <p
-                type="button"
-                // onClick={() => router.push("/dashboard")}
-                className="w-full border border-gray-900 bg-gray-900 text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2"
-              >
-                Go To Dashboard
-              </p>
-            </Link>
+            <Button  size='md' type='submit' className='text-gray-900 bg-white border-2 font-semibold border-gray-900' radius='sm' onClick={() => router.push('/dashboard')}>
+            Go To Dashboard
+           </Button>
           )}
         </div>
       </form>
@@ -69,6 +64,8 @@ function OpenAIKeyInput() {
     </div>
   );
 }
+
+
 
 export default OpenAIKeyInput;
 

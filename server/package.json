@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "dev": "cross-env DEBUG=worker:* PORT=5000 nodemon app.js",
+    "dev": "cross-env node app.js",
     "test": "jest"
   },
   "author": "",

@@ -13,18 +13,20 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-      <html lang="en" className="h-full">
-        <body className={`${rubik.className} h-full`}>
+      <html lang="en" >
+        <body className={`${rubik.className}`}>
         <ClientSessionProvider>
-        <div className="w-full h-full flex flex-col">
-        <NavBar className="fixed top-0 w-full z-10" />
-        <div className="flex-1 flex justify-center items-center mt-16"> 
-          {children}
+        <div className="min-h-screen flex flex-col">
+            <NavBar />
+            <div className="flex-grow flex items-center justify-center"> 
+              {children}
+            </div>
+            <Footer />
         </div>
-        <Footer />
-      </div>
         </ClientSessionProvider>
         </body>
       </html>
   );
 }
+
+//npm install @nextui-org/button

@@ -11,7 +11,7 @@ function NavBar() {
 
 
   return (
-    <nav className="fixed w-[90%] top-0 z-10 m-4 p-2">
+    <nav className="m-4 p-1">
     <div className="w-full mx-auto flex justify-between items-end">
     {session && status === "authenticated"?<div>
       <Link href="/dashboard">

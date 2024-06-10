@@ -1,8 +1,8 @@
 "use client";
-import { Suspense } from 'react'
-import Loading from '../loading';
 
 import { useSession } from 'next-auth/react';
+import { Suspense } from 'react';
+import Loading from '../loading';
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import GetMailComponent from '../components/getMailComponent';
@@ -22,9 +22,13 @@ export default function Dashboard() {
     return <div>Loading...</div>;
   }
     return (
-      <main>
-          <GetMailComponent />
-      </main>
+      <div className='w-full h-full p-4'>
+          <div className='w-full h-full mt-8'>
+            <Suspense fallback={<Loading />}>
+            <GetMailComponent />
+            </Suspense>
+          </div>
+      </div>
     );
   
 }

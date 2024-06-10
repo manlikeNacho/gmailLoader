@@ -9,7 +9,7 @@ function Footer() {
 
 
   return (
-    <nav className="fixed bottom-0 z-10 m-4 p-2">
+    <nav className="m-4 p-1">
     {session && status === "authenticated"?<div>
       <Link href="/dashboard">
         <h1 className="text-am text-left capitalize">signed in as {session.user.name}</h1>

@@ -3,13 +3,23 @@
 @tailwind utilities;
 
 /* base styles */
-body {
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
   background: #ebf0fa;
-  @apply text-gray-500 m-8;
+  scroll-behavior: smooth
 }
-main {
-  @apply max-w-5xl my-12 mx-auto px-8;
-}
+
+/* .bg-primary {
+background-color: #1F2937 !important;
+} */
+
+/* .base{
+  background-color: blue;
+} */
 
 
 /* form styles */
