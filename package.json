@@ -4,8 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "dev": "cross-env node app.js",
-    "test": "jest"
+    "dev": "cross-env DEBUG=worker:* PORT=8080 nodemon app.js",
+    "test": "jest --detectOpenHandles"
   },
   "author": "",
   "license": "ISC",
@@ -24,5 +24,9 @@
     "lodash": "^4.17.21",
     "openai": "^4.49.1",
     "winston": "^3.13.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0"
   }
 }
