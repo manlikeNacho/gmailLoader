@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const { logger } = require('./utils/logger');
 const session = require('express-session');
-const config = require('config');
+// const config = require('config');
 const router = require('./routes/auth.js');
 const dotenv = require('dotenv')
 dotenv.config()
@@ -27,9 +27,9 @@ app.use((req, res, next) => {
 app.use('/',router)
 
 const port = process.env.PORT || 8080;
-
 const server = app.listen(port, async () => {
     logger.info(`Listening from PORT:${port}`);
 });
 
-module.exports = { server };
+
+module.exports = { app, server };

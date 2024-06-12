@@ -2,6 +2,8 @@ const request = require('supertest');
 const { server } = require('../app');
 const { google } = require('googleapis');
 const base64url = require('base64url');
+const { classifyEmails } = require('../utils/classifyMails');
+
 
 jest.mock('googleapis',()=> {
     const gmailMock = {
@@ -28,9 +30,17 @@ jest.mock('googleapis',()=> {
 })
 
 
+jest.mock('../utils/classifyMails', ()=>{
+
+  return {
+    classifyEmails: jest.fn()
+  }
+})
 
 
-afterEach((done) => {
+
+
+afterAll((done) => {
     server.close(done);
 });
 
@@ -89,7 +99,27 @@ describe('Test the mails endpoint', (done)=>{
                 },
               ]);
     })
+
+    it("POST /mail",async ()=> {
+      const mockReqBody = [
+        {
+          "id": "18ffa257bdfe9ad3",
+          "threadId": "18ffa257bdfe9ad3",
+          "snippet": "@OkaroOnochie: https://t.co/cQPfx44eAP Mr No Bitches sent you a Direct Message. https://t.co/cQPfx44eAP Reply Settings | Help | Opt-out | Download app X Corp. 1355 Market Street, Suite 900 San",
+          "subject": "Mr No Bitches (@OkaroOnochie) has sent you a Direct Message on X!",
+          "body": "Mr No Bitches sent you a Direct Message.Reply\r\n>"
+        },]
+
+        classifyEmails.mockResolvedValue(['important'])
+      const res = await request(server).post('/mail').send(mockReqBody).set('openai-api-key', 'kjfdfds').set('Authorization', 'Bearer mockAccessKey')
+
+      expect(res.status).toEqual(200)
+      expect(res.body.length).toBeGreaterThan(0)
+      expect(res.body[0].class).toBe('important')
+    })
 })
+
+
 
 
 

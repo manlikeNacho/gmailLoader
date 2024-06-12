@@ -7,7 +7,7 @@ const { logger } = require('../utils/logger.js');
 
 const router = express.Router()
 
-router.get('home', (req, res)=> {
+router.get('/home', (req, res)=> {
 
     res.send('welcome')
 })
@@ -19,16 +19,16 @@ const oAuth2Client = new google.auth.OAuth2(
 );
 
 // Protected route to get emails
-router.get('/mail', isLoggedIn, async (req, res) => {
+router.get('/mail/:numOfMails', isLoggedIn, async (req, res) => {
+    const maxNoOfMails = req.params.numOfMails || 5
   try {
       const accessToken = req.token;
-      oAuth2Client.setCredentials({ access_token: accessToken });
+     oAuth2Client.setCredentials({ access_token: accessToken });
 
       const gmail = google.gmail({ version: 'v1', auth: oAuth2Client });
-
       const response = await gmail.users.messages.list({
           userId: 'me',
-          maxResults: 5,
+          maxResults: maxNoOfMails,
       });
 
       const messages = response.data.messages;
@@ -95,7 +95,6 @@ router.post('/mail', isLoggedIn, async (req, res) => {
 
       res.json(classifiedEmails);
   } catch (error) {
-      console.log(error)
       logger.error(error.message)
       res.status(400).jsonp({ error: error.message })
   }

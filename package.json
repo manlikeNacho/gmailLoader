@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "dev": "cross-env node app.js",
+    "dev": "cross-env DEBUG=worker:* PORT=8080 nodemon app.js",
     "test": "jest --detectOpenHandles"
   },
   "author": "",
